@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RVC官方整合包下载中心</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
+            color: #f1f2f6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0 30px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 42px;
+            color: #4bcffa;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, #4bcffa, #0fbcf9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .download-section {
+            background: rgba(30, 39, 46, 0.8);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .download-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .section-icon {
+            font-size: 28px;
+            margin-right: 15px;
+            color: #0fbcf9;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            color: #f1f2f6;
+        }
+        
+        .download-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .download-item {
+            background: rgba(20, 29, 38, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            transition: background 0.3s;
+        }
+        
+        .download-item:hover {
+            background: rgba(30, 45, 60, 0.9);
+        }
+        
+        .download-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #4bcffa;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .download-name i {
+            font-size: 1.1rem;
+        }
+        
+        .download-desc {
+            font-size: 0.95rem;
+            color: #aaa;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: linear-gradient(90deg, #0fbcf9, #4bcffa);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .download-button:hover {
+            background: linear-gradient(90deg, #0fa5e9, #34b9f0);
+            box-shadow: 0 5px 15px rgba(11, 188, 249, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .download-button i {
+            font-size: 1.1rem;
+        }
+        
+        .info-box {
+            background: rgba(30, 39, 46, 0.8);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+            border-left: 5px solid #0fbcf9;
+        }
+        
+        .info-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #4bcffa;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-box p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .info-list {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .info-list li {
+            margin-bottom: 8px;
+            color: #ccc;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #4bcffa;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: color 0.3s;
+        }
+        
+        .github-link:hover {
+            color: #0fbcf9;
+        }
+        
+        .chip {
+            display: inline-block;
+            background: rgba(11, 188, 249, 0.2);
+            color: #4bcffa;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-microphone-alt logo-icon"></i>
+                <h1>RVC官方整合包下载中心</h1>
+            </div>
+            <p class="subtitle">免费满速下载Retrieval-based Voice Conversion官方整合包，选择适合您硬件配置的版本。所有版本均为直链下载，无需登录，无需积分。</p>
+        </header>
+        
+        <div class="info-box">
+            <h3><i class="fas fa-info-circle"></i> 使用说明</h3>
+            <p>请根据您的显卡型号选择合适的整合包版本：</p>
+            <ul class="info-list">
+                <li><strong>Nvidia版本</strong>：适用于NVIDIA显卡用户，包含CUDA加速，推荐RTX系列显卡使用</li>
+                <li><strong>AMD/Intel版本</strong>：适用于AMD或Intel显卡用户，使用OpenCL/DirectML进行加速</li>
+                <li><strong>50x0专用版</strong>：专为GTX 50x0系列显卡优化，解决兼容性问题</li>
+            </ul>
+            <p>下载完成后解压文件，运行"go-web.bat"或"go-realtime.bat"启动RVC。首次使用需要下载模型文件。</p>
+        </div>
+        
+        <div class="content">
+            <div class="download-section">
+                <div class="section-header">
+                    <i class="fas fa-microchip section-icon"></i>
+                    <h2>NVIDIA显卡版本</h2>
+                </div>
+                <div class="download-list">
+                    <div class="download-item">
+                        <div class="download-name">
+                            <i class="fas fa-file-archive"></i> RVC 2023.10.06 NVIDIA版
+                            <span class="chip">稳定版</span>
+                        </div>
+                        <p class="download-desc">2023年10月发布的稳定版本，适用于大多数NVIDIA显卡（RTX 20/30/40系列）</p>
+                        <a href="https://www.modelscope.cn/models/FlowerCry/rvc-windows-packages/resolve/master/RVC20231006Nvidia.7z" class="download-button" target="_blank">
+                            <i class="fas fa-download"></i> 下载 (约 5.2GB)
+                        </a>
+                    </div>
+                    
+                    <div class="download-item">
+                        <div class="download-name">
+                            <i class="fas fa-file-archive"></i> RVC 2024.06.04 NVIDIA版
+                            <span class="chip">最新版</span>
+                        </div>
+                        <p class="download-desc">2024年6月发布的最新版本，性能优化，支持更多模型，推荐RTX 30/40系列使用</p>
+                        <a href="https://www.modelscope.cn/models/FlowerCry/rvc-windows-packages/resolve/master/RVC20240604Nvidia.7z" class="download-button" target="_blank">
+                            <i class="fas fa-download"></i> 下载 (约 6.1GB)
+                        </a>
+                    </div>
+                    
+                    <div class="download-item">
+                        <div class="download-name">
+                            <i class="fas fa-file-archive"></i> RVC 2024.06.04 NVIDIA 50x0版
+                            <span class="chip">专用版</span>
+                        </div>
+                        <p class="download-desc">专为GTX 50x0系列显卡优化，解决部分兼容性问题，提升运行稳定性</p>
+                        <a href="https://www.modelscope.cn/models/FlowerCry/rvc-windows-packages/resolve/master/RVC20240604Nvidia50x0.7z" class="download-button" target="_blank">
+                            <i class="fas fa-download"></i> 下载 (约 6.1GB)
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="download-section">
+                <div class="section-header">
+                    <i class="fas fa-microchip section-icon"></i>
+                    <h2>AMD & Intel 显卡版本</h2>
+                </div>
+                <div class="download-list">
+                    <div class="download-i
